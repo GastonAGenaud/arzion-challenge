@@ -1,4 +1,11 @@
 import { Given, Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import Login from "../../support/pageObjects/LoginPage";
+import Dashboard from "../../support/pageObjects/DashboardPage";
+import Home from "../../support/pageObjects/HomePage";
+
+const login = new Login();
+const dashboard = new Dashboard();
+const home = new Home()
 
 Given("I go to Myshop4 Page", () => {});
 
@@ -53,4 +60,6 @@ And("Delete the product with price {}", (arg) => {});
 
 And("I go to My Dashboard", () => {});
 
-And("click on share button on {}", (arg) => {});
+And("click on share button on Your Catalog", () => {
+    dashboard.getShareBtn();
+});

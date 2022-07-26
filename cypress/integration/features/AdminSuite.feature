@@ -47,5 +47,5 @@ Feature: Admin Suite
         Given I go to Myshop4 Page
         When I login with "valid" credentials
         And I go to My Dashboard
-        And click on share button on "my catalog"
+        And click on share button on Your Catalog
         Then save data into a file "admin-suite-catalog"
