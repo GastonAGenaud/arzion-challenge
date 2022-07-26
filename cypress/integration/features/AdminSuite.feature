@@ -6,7 +6,7 @@ Feature: Admin Suite
         Given I go to Myshop4 Page
         When I locate the title of the page
         Then I validate that it is visible
-        And I validate that the title is "Bienvenido/a"
+        And I validate that the title is "Bienvenidos a MyShop4"
 
     Scenario: Try to login with wrong information. Validations should be done.
         Given I go to Myshop4 Page
