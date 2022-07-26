@@ -1,0 +1,22 @@
+{
+  "name": "arzion-challenge",
+  "version": "1.0.0",
+  "description": "Automation project with Cypress and cucumber for Arzion. Challenge code.",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GastonAGenaud/arzion-challenge.git"
+  },
+  "keywords": [
+    "Cypress",
+    "Cucumber"
+  ],
+  "author": "Ssr SDET Gaston Alejandro Genaud",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GastonAGenaud/arzion-challenge/issues"
+  },
+  "homepage": "https://github.com/GastonAGenaud/arzion-challenge#readme"
+}
