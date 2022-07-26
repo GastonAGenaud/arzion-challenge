@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Automation project with Cypress and cucumber for Arzion. Challenge code.",
   "scripts": {
-    "test": ""
+    "test": "cypress run --spec **/*.feature"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,13 @@
   },
   "homepage": "https://github.com/GastonAGenaud/arzion-challenge#readme",
   "dependencies": {
-    "cypress": "^10.3.1"
+    "cypress": "^9.7.0"
   },
   "devDependencies": {
     "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint": "^8.20.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
