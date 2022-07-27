@@ -1,8 +1,10 @@
 /* eslint-disable no-undef */
 
 class DashboardPage {
+
   getGoToDashboard() {
-    cy.visit(Cypress.env("dashboardUrl"));
+    var url = Cypress.env("dashboardUrl");
+    cy.visit(url);
     return this;
   }
   getShareBtn() {

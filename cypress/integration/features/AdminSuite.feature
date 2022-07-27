@@ -4,9 +4,8 @@ Feature: Admin Suite
 
     Scenario: Open a browser and visit myshop4 page (url provided above). Check the page's title.
         Given I go to Myshop4 Page
-        When I locate the title of the page
-        Then I validate that it is visible
-        And I validate that the title is "Bienvenidos a MyShop4"
+        When I validate that the title is visible
+        And I validate that the title is "Bienvenido/a"
 
     Scenario: Try to login with wrong information. Validations should be done.
         Given I go to Myshop4 Page

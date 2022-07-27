@@ -1,8 +1,9 @@
+
 /* eslint-disable no-undef */
 
 class HomePage {
-  getGoToHome() {
-    cy.visit(Cypress.env("baseUrl"));
+  getGoToHome(url) {
+    cy.visit(url);
     return this;
   }
   getHomeButton() {

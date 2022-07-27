@@ -35,7 +35,7 @@ class CategoriesPage {
   }
 
   getThreeDotsButton() {
-    cy.get("#\31 51-dropdown").click();
+    cy.get("#\\31 51-dropdown").click();
   }
 
   getUpdateButton() {
