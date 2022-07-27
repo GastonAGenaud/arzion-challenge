@@ -1,5 +1,24 @@
 # QA AUTOMATION CHALLENGE
 
+## HOW TO RUN
+```
+first step
+npm install
+
+for test execution use
+
+npm run test
+
+for open the interface of Cypress use 
+npm run interface
+```
+
+## Stack
+i use cucumber preproceessor to integrate Cucumber with Cypress and add the posibility to use in the proyect Gherkin and the BDD pattern
+I also use POM for frontend automation tests.
+```
+    "cypress-cucumber-preprocessor": "^4.3.1",
+```
 
 ## MAIN GOAL
 

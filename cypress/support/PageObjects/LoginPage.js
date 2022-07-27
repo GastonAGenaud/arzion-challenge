@@ -16,12 +16,12 @@ class LoginPage {
   }
 
   getLoginButton() {
-    cy.get("body").find("button").contains("INICIAR SESIÓN").click();
+    cy.get("body").find("button").contains("Iniciar sesión").click();
     return this;
   }
 
   getSignInButton() {
-    cy.get("body").find("button").contains("Registrarse").click();
+    cy.get("body").find("a").contains("Login").click({force: true});
     return this;
   }
 
@@ -36,12 +36,13 @@ class LoginPage {
   }
 
   getValidateWrongLoginMessage() {
-    cy.get("#snackbar-wrapper > div").should("be.visible");
+    cy.get("#snackbar-wrapper").find("div.alert-content-wrapper").should("be.visible");
+    cy.get("#snackbar-system-alert-content").should("have.text", "Credenciales inválidas")
     return this;
   }
 
   getValidateSuccessfullLogin() {
-    cy.get("#root").find("h6").contains("Welcome QA Team1");
+    cy.get("body").find("h6").should("include.text", "Welcome QA Team1");
     return this;
   }
 }

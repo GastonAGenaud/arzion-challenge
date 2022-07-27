@@ -21,11 +21,26 @@ When("I validate that the title is visible", () => {
   login.getValidateVisibleTitle();
 });
 
-When("I login with {} credentials", (user) => {
-  cy.fixture("cypress\\fixtures\\credentials.json").then((credentials) => {
-    login.getEmailTextfield(credentials[user].email);
-    login.getPasswordTextfield(credentials[user].password);
+When("I login with {string} credentials", (user) => {
+  var email = null;
+  var password = null;
+  cy.fixture("credentials.json").then((credentials) => {
+    switch (user) {
+      case "valid":
+        email = credentials.valid.email;
+        password = credentials.valid.password;
+        break;
+  
+      default:
+        email = credentials.invalid.email;
+        password = credentials.invalid.password;
+        break;
+    }
+    login.getSignInButton();
+    login.getEmailTextfield(email);
+    login.getPasswordTextfield(password);
     login.getLoginButton();
+
   });
 });
 
