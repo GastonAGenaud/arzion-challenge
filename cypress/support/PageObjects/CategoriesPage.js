@@ -2,7 +2,8 @@
 
 class CategoriesPage {
   getValidateNewCategory() {
-    cy.get("#root").find(h4).contains("Categories");
+    cy.intercept('/catalogs/*/categories/*').as("getCategoryEdited");
+    cy.wait('@getCategoryEdited').its("response.statusCode").should("eq", 200);
     return this;
   }
 
@@ -13,33 +14,56 @@ class CategoriesPage {
   }
 
   getAddButton() {
-    cy.get("body").find("button").contains("Add").click();
+    cy.get("#button-add-category").click();
+    cy.wait("@getAccount");
     return this;
   }
   getTypeCategoryName(text) {
-    cy.get("#category-name").click().type(text);
+    cy.get("#category-name").click().clear().type(text);
     return this;
   }
 
   getAvailableCheckbox() {
-    cy.get("body").find("button").contains("Available").click();
+    cy.get("#category-is-active-label > span").click();
+    return this;
+  }
+  getAddCategoryButton() {
+    cy.get("#category-add").click({ force: true });
+    cy.intercept("/locations/*/categories").as("getCategory");
+    cy.wait("@getCategory").its("response.statusCode").should("eq", 201);
+    cy.wait(3000);
     return this;
   }
 
-  getAddCategoryButton() {
-    cy.get("#category-add").find("button").contains("Add").click();
-  }
-
   getEditButton() {
-    cy.get("body").find("button").contains("Edit").click();
+    cy.get("#\\33 33-dropdown-ul > li:nth-child(2)").click({force: true});
+    return this;
   }
 
   getThreeDotsButton() {
-    cy.get("#\\31 51-dropdown").click();
+    cy.get('#root > div > div.main-wrapper > div.main-content-wrapper > div > div > div.main-content-data > div:nth-child(2)').find('button').first().click({force:true});
+    return this;
   }
 
   getUpdateButton() {
     cy.get("body").find("button").contains("Update").click();
+    return this;
+  }
+
+  getCategoriesButton() {
+    cy.intercept("/*").as("getAccount");
+    cy.wait("@getAccount");
+    cy.get("#sidebar-categories").click({ force: true });
+    return this;
+  }
+  getConfirmCategoryImage() {
+    cy.get("#modal-close-button").click();
+    return this;
+  }
+  getSearchCategory(search){
+    cy.get("#search-mobile").type(search);
+    cy.wait(2000)
+    return this;
   }
 }
 

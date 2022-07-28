@@ -54,7 +54,10 @@ Then("i validate successfull login", () => {
 });
 
 Then("I validate add new category and edit it", () => {
-    dashboard.getValidateNewCategory();
+    categories.getTypeCategoryName('edited by Gaston');
+    categories.getUpdateButton();
+    categories.getValidateNewCategory();
+    
 });
 
 Then("check that the Products quantity is the one expected.", () => {});
@@ -78,10 +81,12 @@ And("write {}", (text) => {
 });
 
 And("select an image", () => {
-    categories.getTypeCategoryName();
+    categories.getCategoryImage();
+    categories.getConfirmCategoryImage();
 });
 
 And("check Available checkbox", () => {
+    categories.getAvailableCheckbox();
     categories.getAvailableCheckbox();
 });
 
@@ -89,15 +94,20 @@ And("select button Add", () => {
     categories.getAddCategoryButton();
 });
 
-And("edit the category {}", (arg) => {
-    categories.getEditButton
+And("edit the category {}", (category) => {
+  categories.getSearchCategory(category);
+    categories.getThreeDotsButton();
+    categories.getEditButton();
+
 });
 
 And("select Update button", () => {
     categories.getUpdateButton
 });
 
-And("Add a product with price {}", (arg) => {});
+And("Add a product with price {}", (arg) => {
+  
+});
 
 And("Add a product with discount", () => {});
 

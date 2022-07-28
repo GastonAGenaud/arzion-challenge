@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Automation project with Cypress and cucumber for Arzion. Challenge code.",
   "scripts": {
-    "test": "cypress run --spec **/*.feature",
+    "test": "cypress run --spec **/AdminSuite.feature",
     "interface": "cypress open"
 
   },

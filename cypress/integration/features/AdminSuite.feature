@@ -26,7 +26,7 @@ Feature: Admin Suite
         And select an image
         And check Available checkbox
         And select button Add
-        And edit the category "Test Automation"
+        And edit the category Test Automation
         And select Update button
         Then I validate add new category and edit it
 
