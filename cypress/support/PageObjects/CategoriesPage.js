@@ -36,8 +36,9 @@ class CategoriesPage {
   }
 
   getEditButton() {
-    cy.get("#\\33 33-dropdown-ul > li:nth-child(2)").click({force: true});
-    return this;
+    
+    cy.get('#\\33 29-dropdown-ul > .dropdown-menu-item:nth-child(2)').click();
+     return this;
   }
 
   getThreeDotsButton() {
@@ -65,6 +66,7 @@ class CategoriesPage {
     cy.wait(2000)
     return this;
   }
+  
 }
 
 export default CategoriesPage;

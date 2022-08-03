@@ -102,26 +102,33 @@ And("edit the category {}", (category) => {
 });
 
 And("select Update button", () => {
-    categories.getUpdateButton
+    categories.getUpdateButton()
 });
 
-And("Add a product with price {}", (arg) => {
-  
+And("Add a product with price {}", (price) => {
+  home.getProductsButton();
+  products.getAddProductByPrice(price);
 });
 
 And("Add a product with discount", () => {});
 
 And("edit the product", () => {
-    products.getEditIconButton();
+  home.getProductsButton();
+  products.getEditLastProduct();
 });
 
-And("Filter the products by the category {}", (arg) => {});
+And("Filter the products by the category {}", (category) => {
+  products.getFilterByCategory(category);
+});
 
-And("I show the number of results", () => {});
-
-And("I show the number of results", () => {});
+And("I show the number of results", () => {
+  products.getAllProducts();
+  products.getCountCategory();
+});
 
 And("Delete the product with price {}", (arg) => {
+
+  products.getDeleteMultipleProduct();
 });
 
 And("I go to My Dashboard", () => {

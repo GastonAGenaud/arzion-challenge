@@ -22,7 +22,9 @@ class HomePage {
   }
 
   getProductsButton() {
-    cy.get("body").find("button").contains("Productos").click();
+    cy.intercept('GET' , '/catalogs/*/categories?order=index,desc').as('load') 
+    cy.wait('@load').its('response.statusCode').should('eq', 200)
+    cy.get("#sidebar-panelmenu").contains('Products').click({force: true});
     return this;
   }
 
