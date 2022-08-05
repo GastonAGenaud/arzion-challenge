@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    name: Test Plan
+    steps:
+      - name: Install
+        uses: actions/checkout@v3
+      - name: Hello world action step
+        uses: actions/checkout@v3
+        run: npm ci
+      - name: Test
+        run: npm run test

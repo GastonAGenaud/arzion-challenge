@@ -1,0 +1,6 @@
+{
+  "testFiles": "**/*.feature",
+  "baseUrl": "https://www.myshop4.com/",
+  "dashboardUrl":"https://app.myshop4.com/mylocation/dashboard",
+  "loginUrl":"https://app.myshop4.com/auth/login?locale=es"
+}
