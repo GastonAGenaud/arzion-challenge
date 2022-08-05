@@ -2,10 +2,10 @@ on: [push]
 
 jobs:
   Test:
-    runs-on: cypress/browsers
+    runs-on: ubuntu-latest
     name: Test Plan
     steps:
       - name: Install
         uses: actions/checkout@v3
       - name: Test execution Admin Suite
-        run: npm i && npm run test
+        run: npm i -g cypress && npm i && npm run test
