@@ -7,7 +7,5 @@ jobs:
     steps:
       - name: Install
         uses: actions/checkout@v3
-      - name: Hello world action step
-        run: npm ci
-      - name: Test
-        run: npm run test
+      - name: Test execution Admin Suite
+        run: npm i && npm run test
