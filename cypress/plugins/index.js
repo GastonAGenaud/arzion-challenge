@@ -19,4 +19,10 @@ const cucumber = require('cypress-cucumber-preprocessor').default;
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
   on('file:preprocessor', cucumber())
+  on('before:browser:launch', (browser = {}, args) => {
+    if (browser.family === 'chrome') {
+      args.push('--disable-dev-shm-usage');
+    }
+    return args;
+  });
 }
