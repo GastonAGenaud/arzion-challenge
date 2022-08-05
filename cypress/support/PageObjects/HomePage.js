@@ -28,40 +28,13 @@ class HomePage {
     return this;
   }
 
-  getFaqsButton() {
-    cy.get("body").find("button").contains("FAQs").click();
+  getDashboardButton() {
+    cy.intercept('GET' , '/catalogs/*/categories?order=index,desc').as('load') 
+    cy.wait('@load').its('response.statusCode').should('eq', 200)
+    cy.get("#sidebar-panelmenu").contains('Dashboard').click({force: true});
     return this;
   }
 
-  getSignUpButton() {
-    cy.get("body").find("a").contains("Registrarme").click();
-    return this;
-  }
-
-  getLogInButton() {
-    cy.get("body").find("button").contains("Login").click();
-    return this;
-  }
-
-  getRegistrerButton() {
-    cy.get("body").find(".uk-dark").contains("Registrarme").click();
-    return this;
-  }
-
-  getGastronomicMenuButton() {
-    cy.get("body").find("button").contains("Menú Gastronómico").click();
-    return this;
-  }
-
-  getOnlineShop() {
-    cy.get("body").find("button").contains("Tienda Online").click();
-    return this;
-  }
-
-  getSeeDemoButton() {
-    cy.get("body").find("button").contains("Ver demo").click();
-    return this;
-  }
 }
 
 export default HomePage;

@@ -3,12 +3,20 @@
 class DashboardPage {
 
   getGoToDashboard() {
-    var url = Cypress.env("dashboardUrl");
-    cy.visit(url);
+    cy.visit('https://app.myshop4.com/mylocation/dashboard');
     return this;
   }
   getShareBtn() {
-    cy.get("body").find("button").contains("Share").click();
+    cy.wait(2000)
+    cy.get("button.button:nth-child(2)").click();
+    cy.get(".type-text > input:nth-child(2)").invoke('attr', 'value')
+    .then((value) => {
+      cy.visit(value)
+    })
+    cy.get('html:root').eq(0).invoke('prop', 'innerHTML').then((doc) => {
+      cy.writeFile('pageMarkup.html', doc);
+    });
+
     return this;
   }
 

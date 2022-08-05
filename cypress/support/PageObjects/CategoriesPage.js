@@ -37,7 +37,7 @@ class CategoriesPage {
 
   getEditButton() {
     
-    cy.get('#\\33 29-dropdown-ul > .dropdown-menu-item:nth-child(2)').click();
+    cy.get('.dropdown-menu-item-categories').contains('Edit').click();
      return this;
   }
 
@@ -47,7 +47,8 @@ class CategoriesPage {
   }
 
   getUpdateButton() {
-    cy.get("body").find("button").contains("Update").click();
+    cy.wait(2000)
+    cy.get("body").find("button").contains("Update").click({force: true});
     return this;
   }
 

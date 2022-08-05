@@ -1,6 +1,10 @@
 /* eslint-disable no-undef */
 
 class ProductsPage {
+  constructor(idProduct) {
+    this.idProduct = idProduct;
+  }
+
   getEditLastProduct() {
     cy.get("#table-products > tbody")
       .find("tr")
@@ -13,28 +17,25 @@ class ProductsPage {
     return this;
   }
   getDeleteMultipleProduct() {
-    // cy.contains("td > span", "Multiple")
-    //   .siblings()
-    //   .contains('button[class="button   button-icon  button-dropdown "]')
-    //   .first()
-    //   .click();
-    // cy.get('ul[class="dropdown-menu  is-open"]')
-    //   .find("li")
-    //   .contains("Remove")
-    //   .click();
-
+    var token;
+    var idSlice;
+    cy.wait("@ProductAdded").then(({ request }) => {
+      cy.log(request.headers.authorization);
+      token = request.headers.authorization;
+    });
     cy.get("#table-products > tbody")
     .find("tr")
     .find("td").find('span').contains('Multiple')
-      .parent().parent()
-      .within(($tr) => {
-        cy.get('button[class="button   button-icon  button-dropdown "]').click();
-        cy.wait(3000)
-        cy.get('ul:has(.dropdown-menu.is-open)')
-          .click();
-      });
+      .parent().parent().invoke('attr', 'id')
+      .then((id) => {
+        cy.log(id)
+        idSlice = id.slice(-3);
+        cy.log(idSlice);
+        cy.deleteProductById(idSlice, token);
+      })
     return this;
   }
+
   getAddButton() {
     cy.get("#add-button").click();
     return this;
@@ -76,9 +77,11 @@ class ProductsPage {
     cy.intercept("GET", "/catalogs/*/products?per_page=100&page=1").as(
       "getAllProducts"
     );
-    cy.wait("@getAllProducts", { timeout: 30000 })
-      .its("response.statusCode")
-      .should("eq", 200);
+    return this;
+  }
+  getAllProductsForce() {
+    cy.wait(4000);
+    cy.get("#table-products-footer-page-size").select("100");
     return this;
   }
 

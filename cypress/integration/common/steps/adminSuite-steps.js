@@ -60,9 +60,17 @@ Then("I validate add new category and edit it", () => {
     
 });
 
-Then("check that the Products quantity is the one expected.", () => {});
+Then("check that the Products quantity is the one expected.", () => {
+  products.getAllProductsForce();
+  products.getAllProducts();
+  products.getCountCategory();
+});
 
-Then("save data into a file {}", (arg) => {});
+Then("save data into a file {}", (fileName) => {
+  cy.get('html:root').eq(0).invoke('prop', 'innerHTML').then((doc) => {
+  cy.writeFile(`${fileName}.html`, doc);
+  });
+});
 
 // And section
 And("I validate that the title is {}", (arg) => {
@@ -123,6 +131,7 @@ And("Filter the products by the category {}", (category) => {
 
 And("I show the number of results", () => {
   products.getAllProducts();
+  products.getAllProducts();
   products.getCountCategory();
 });
 
@@ -131,10 +140,9 @@ And("Delete the product with price {}", (arg) => {
   products.getDeleteMultipleProduct();
 });
 
-And("I go to My Dashboard", () => {
-    dashboard.getGoToDashboard();
-});
+
 
 And("click on share button on Your Catalog", () => {
   dashboard.getShareBtn();
+  
 });
