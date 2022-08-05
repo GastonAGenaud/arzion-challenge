@@ -1,14 +1,23 @@
-on: [push]
-
+name: Test
+on:
+  push:
+    branches:    
+      - 'master'
+  pull_request:
 jobs:
-  Test:
-    runs-on: ubuntu-latest
-    name: Test Plan
+  build-and-test:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node: [12, 14, 16]
+    name: Test on Node v${{ matrix.node }}
     steps:
-      - name: Install
-        uses: actions/checkout@v3
-      - name: Hello world action step
-        uses: actions/checkout@v3
-        run: npm ci
-      - name: Test
-        run: npm run test
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: bahmutov/npm-install@v1
+      - run: npm i
+      - run: npm test
